@@ -34,6 +34,24 @@ class Student:
                 f"Средняя оценка за домашние задания: {self.aver_grade()}\n"
                 f"Курсы в процессе изучения: {', '.join(self.courses_in_progress)}\n"
                 f"Завершенные курсы: {', '.join(self.finished_courses)}")
+    
+    def __gt__(self, other):
+        return self.aver_grade() > other.aver_grade()
+        
+    def __lt__(self, other):
+        return self.aver_grade() < other.aver_grade()
+        
+    def __ge__(self, other):
+        return self.aver_grade() >= other.aver_grade()
+        
+    def __le__(self, other):
+        return self.aver_grade() <= other.aver_grade()
+        
+    def __eq__(self, other):
+        return self.aver_grade() == other.aver_grade()
+        
+    def __ne__(self, other):
+        return self.aver_grade() != other.aver_grade()
         
 class Mentor:
     def __init__(self, name, surname):
@@ -59,7 +77,25 @@ class Lecturer(Mentor):
         return (f"Имя: {self.name}\n"
                 f"Фамилия: {self.surname}\n"
                 f"Средняя оценка за лекции: {self.aver_grade()}")    
-    
+
+    def __gt__(self, other):
+        return self.aver_grade() > other.aver_grade()
+        
+    def __lt__(self, other):
+        return self.aver_grade() < other.aver_grade()
+        
+    def __ge__(self, other):
+        return self.aver_grade() >= other.aver_grade()
+        
+    def __le__(self, other):
+        return self.aver_grade() <= other.aver_grade()
+        
+    def __eq__(self, other):
+        return self.aver_grade() == other.aver_grade()
+        
+    def __ne__(self, other):
+        return self.aver_grade() != other.aver_grade()
+        
 class Reviewer(Mentor):
     def __init__(self, name, surname):
         super().__init__(name, surname)
@@ -152,6 +188,10 @@ lecturers = [lecturer1, lecturer2]
 print(reviewer1)
 print(lecturer1)
 print(student1)
+
+print(student1 > student2) # comparison based on averagegrade
+print(lecturer1 < lecturer2) # comparison based on averagegrade
+
 print(f"Лучший студент: {best_student(students)}")
 print(f"Лучший лектор: {best_lecturer(lecturers)}")
 print(f"Средний бал всех студентов на курсе Python: {aver_grade_of_all_students(students, 'Python')}")
